@@ -32,7 +32,10 @@ class Gifsicle extends AbstractOptimizationProvider
      */
     public function optimize($image)
     {
-        $content = shell_exec($this->binaryPath.' -O2 '.escapeshellarg($image));
+        $cache = CACHE . "/" . MD5($image . time());
+        $content = shell_exec($this->binaryPath . ' -O2 ' . escapeshellarg($image) . ' > ' . escapeshellarg($cache));
+        $content = file_get_contents($cache);
+        unlink($cache);
 
         if (!$content) {
             throw new Exception('There was an error during the optimization');
