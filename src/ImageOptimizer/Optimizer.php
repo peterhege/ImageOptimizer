@@ -44,6 +44,13 @@ class Optimizer
         ) {
             throw new Exception('Optimizer not found');
         }
+        
+        if (!defined('CACHE')) {
+            define('CACHE', __DIR__ . "/cache");
+        }
+        if (!file_exists(CACHE . "/img")) {
+            mkdir(CACHE . "/img", 0755, true);
+        }
 
         $this->mozjpeg  = new Mozjpeg($optimizer[self::MOZJPEG_PATH]);
         $this->pngquant = new Pngquant($optimizer[self::PNGQUANT_PATH]);
