@@ -69,15 +69,15 @@ class Optimizer
      */
     public function optimize($input, $output = '')
     {
-        switch (pathinfo($input, PATHINFO_EXTENSION)) {
-            case 'jpg':
-            case 'jpeg':
+        $ext = exif_imagetype($input);
+        switch ($ext) {
+            case IMAGETYPE_JPEG:
                 $content = $this->mozjpeg->optimize($input);
                 break;
-            case 'png':
+            case IMAGETYPE_PNG:
                 $content = $this->pngquant->optimize($input);
                 break;
-            case 'gif':
+            case IMAGETYPE_GIF:
                 $content = $this->gifsicle->optimize($input);
                 break;
             default:
