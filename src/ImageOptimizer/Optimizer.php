@@ -45,8 +45,8 @@ class Optimizer
             throw new Exception('Optimizer not found');
         }
         
-        if (!defined('CACHE')) {
-            define('CACHE', __DIR__ . "/cache");
+        if (!defined('IMAGE_OPTIMIZER_CACHE')) {
+            define('IMAGE_OPTIMIZER_CACHE', __DIR__ . "/cache");
         }
         if (!file_exists(CACHE . "/img")) {
             mkdir(CACHE . "/img", 0755, true);
