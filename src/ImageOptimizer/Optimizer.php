@@ -48,8 +48,8 @@ class Optimizer
         if (!defined('IMAGE_OPTIMIZER_CACHE')) {
             define('IMAGE_OPTIMIZER_CACHE', __DIR__ . "/cache");
         }
-        if (!file_exists(CACHE . "/img")) {
-            mkdir(CACHE . "/img", 0755, true);
+        if (!file_exists(IMAGE_OPTIMIZER_CACHE . "/img")) {
+            mkdir(IMAGE_OPTIMIZER_CACHE . "/img", 0755, true);
         }
 
         $this->mozjpeg  = new Mozjpeg($optimizer[self::MOZJPEG_PATH]);
