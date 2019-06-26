@@ -32,7 +32,7 @@ class Pngquant extends AbstractOptimizationProvider
      */
     public function optimize($image)
     {
-        $cache = CACHE . "/img/" . MD5($image . time());
+        $cache = IMAGE_OPTIMIZER_CACHE . "/img/" . MD5($image . time());
         $content = exec($this->binaryPath . ' - < ' . escapeshellarg($image) . ' > ' . escapeshellarg($cache));
         $content = file_get_contents($cache);
         unlink($cache);
