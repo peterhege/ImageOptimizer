@@ -32,7 +32,7 @@ class Mozjpeg extends AbstractOptimizationProvider
      */
     public function optimize($image)
     {
-        $cache = CACHE . "/img/" . MD5($image . time());
+        $cache = IMAGE_OPTIMIZER_CACHE . "/img/" . MD5($image . time());
         $content = shell_exec($this->binaryPath . ' -optimize ' . escapeshellarg($image) . ' > ' . escapeshellarg($cache));
         $content = file_get_contents($cache);
         unlink($cache);
